@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vote</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-vote">
+  <div class="container">
+    <div class="progress">
+      <span data-i18n="progressStep">Step</span> 
+      <span class="current-step">1</span> 
+      <span data-i18n="progressOf">of</span> 
+      2
+    </div>
+    
+    <!-- Step 1: Priority Vote -->
+    <div class="step step-1 active">
+      <h1 data-i18n="voteStep1Title">What would most improve this playground?</h1>
+      
+      <p class="helper" data-i18n="voteInstructions">Pick two or more</p>
+      
+      <div class="vote-options">
+        <label class="vote-option">
+          <input type="checkbox" name="priority" value="shade">
+          <span data-i18n="voteOptionShade">More shade</span>
+        </label>
+        <label class="vote-option">
+          <input type="checkbox" name="priority" value="seating">
+          <span data-i18n="voteOptionSeating">More seating</span>
+        </label>
+        <label class="vote-option">
+          <input type="checkbox" name="priority" value="equipment">
+          <span data-i18n="voteOptionEquipment">Better play equipment</span>
+        </label>
+        <label class="vote-option">
+          <input type="checkbox" name="priority" value="gathering">
+          <span data-i18n="voteOptionGathering">A space for gathering</span>
+        </label>
+        <label class="vote-option">
+          <input type="checkbox" name="priority" value="other" id="other-checkbox">
+          <span data-i18n="voteOptionOther">Other</span>
+        </label>
+      </div>
+      
+      <input type="text" 
+             id="other-text" 
+             class="other-input" 
+             data-i18n-placeholder="voteOtherPlaceholder"
+             placeholder="Tell us what would help..." 
+             disabled>
+      
+      <div class="buttons">
+        <button class="btn-vote" data-i18n="vote">Vote</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Confirmation -->
+    <div class="step step-2">
+      <h1 data-i18n="voteStep2Title">Thanks — your input has been counted</h1>
+      
+      <div class="design-inspiration">
+        <p class="inspiration-prompt" data-i18n="inspirationPromptVote">Want to see what's possible for this space?</p>
+        <a href="https://instagram.com/streetoyster.nyc" target="_blank" rel="noopener noreferrer">
+          <button class="secondary" data-i18n="designReferenceBtn">Explore design references →</button>
+        </a>
+      </div>
+      
+      <p class="helper" data-i18n="voteStep2Helper">Want to share how you use the playground?</p>
+      
+      <div class="buttons">
+        <a href="share.html"><button data-i18n="share">Share</button></a>
+      </div>
+      
+      <div class="form-group">
+        <label class="field-label" data-i18n="getUpdates">Get project updates</label>
+        <input type="email" id="email" data-i18n-placeholder="emailPlaceholder" placeholder="your@email.com (optional)">
+      </div>
+      
+      <div class="buttons">
+        <a href="index.html"><button class="secondary" data-i18n="done">Done</button></a>
+      </div>
+    </div>
+  </div>
+
+  <script src="languages.js"></script>
+  <script src="language-toggle.js"></script>
+  <script>
+    let currentStep = 1;
+    
+    function showStep(n) {
+      document.querySelectorAll('.step').forEach(step => {
+        step.classList.remove('active');
+      });
+      document.querySelector(`.step-${n}`).classList.add('active');
+      document.querySelector('.current-step').textContent = n;
+      currentStep = n;
+      window.scrollTo(0, 0);
+    }
+    
+    // Step 1: Vote submit
+    document.querySelector('.btn-vote').addEventListener('click', () => {
+      const selected = document.querySelectorAll('input[name="priority"]:checked');
+      const otherCheckbox = document.getElementById('other-checkbox');
+      const otherText = document.getElementById('other-text');
+      
+      if (selected.length < 2) {
+        alert(getTranslation('alertVote'));
+        return;
+      }
+      
+      if (otherCheckbox.checked && !otherText.value.trim()) {
+        alert(getTranslation('alertVoteOtherEmpty'));
+        return;
+      }
+      
+      showStep(2);
+    });
+    
+    // Enable/disable "Other" text input based on checkbox
+    document.getElementById('other-checkbox').addEventListener('change', (e) => {
+      const input = document.getElementById('other-text');
+      input.disabled = !e.target.checked;
+      if (!e.target.checked) input.value = '';
+      if (e.target.checked) input.focus();
+    });
+  </script>
+</body>
+</html>
