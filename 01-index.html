@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>General Hart Playground</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-index">
+  <div class="container">
+    <div class="language">
+        <button data-lang="en" onclick="setLanguage('en')" class="language-primary">English</button>
+        
+        <div class="language-grid">
+          <button data-lang="es" onclick="setLanguage('es')">Español</button>
+          <button data-lang="tl" onclick="setLanguage('tl')">Tagalog</button>
+          <button data-lang="bn" onclick="setLanguage('bn')">বাংলা</button>
+          <button data-lang="ne" onclick="setLanguage('ne')">नेपाली</button>
+          <button data-lang="zh" onclick="setLanguage('zh')">中文</button>
+          <button data-lang="sa" onclick="setLanguage('sa')">संस्कृत</button>
+        </div>
+      </div>
+      <div class="kicker" data-i18n="kicker">Woodside Play Lab</div>
+      <h1 data-i18n="headline">How do you use this playground?</h1>
+      <p class="subhead" data-i18n="intro">We're gathering community input to help shape the future of General Hart Playground.</p>
+    <div class="buttons">
+        <a href="share.html"><button data-i18n="share">Share</button></a>
+        <a href="vote.html"><button data-i18n="vote">Vote</button></a>
+      </div>
+      <div class="meta" data-i18n="meta">Open to all • Any language • No account needed</div>
+  </div>
+  
+  <script src="languages.js"></script>
+  <script src="language-toggle.js"></script>
+</body>
+</html>
