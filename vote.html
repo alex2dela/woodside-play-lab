@@ -8,35 +8,38 @@
 </head>
 <body class="page-vote">
   <div class="container">
-    <div class="progress">
-      <span data-i18n="progressStep">Step</span> 
-      <span class="current-step">1</span> 
-      <span data-i18n="progressOf">of</span> 
-      2
-    </div>
-    
     <!-- Step 1: Priority Vote -->
     <div class="step step-1 active">
-      <h1 data-i18n="voteStep1Title">What would most improve this playground?</h1>
+      <p class="step-label" data-i18n="voteStep1Label">YOUR PRIORITIES</p>
       
-      <p class="helper" data-i18n="voteInstructions">Pick two or more</p>
+      <h1 data-i18n="voteStep1Title">WHAT SHOULD THE ARTIST PRIORITIZE?</h1>
+      
+      <p class="description" data-i18n="voteInstructions">Pick two or more things that matter to you.</p>
       
       <div class="vote-options">
         <label class="vote-option">
           <input type="checkbox" name="priority" value="shade">
-          <span data-i18n="voteOptionShade">More shade</span>
+          <span data-i18n="voteOptionShade">More shade for hot days</span>
         </label>
         <label class="vote-option">
           <input type="checkbox" name="priority" value="seating">
-          <span data-i18n="voteOptionSeating">More seating</span>
+          <span data-i18n="voteOptionSeating">Seating for grandparents and caregivers</span>
         </label>
         <label class="vote-option">
-          <input type="checkbox" name="priority" value="equipment">
-          <span data-i18n="voteOptionEquipment">Better play equipment</span>
+          <input type="checkbox" name="priority" value="ages">
+          <span data-i18n="voteOptionAges">Play that works for different ages together</span>
+        </label>
+        <label class="vote-option">
+          <input type="checkbox" name="priority" value="cultures">
+          <span data-i18n="voteOptionCultures">Spaces that feel connected to our cultures</span>
+        </label>
+        <label class="vote-option">
+          <input type="checkbox" name="priority" value="movement">
+          <span data-i18n="voteOptionMovement">Creative movement (not just standard equipment)</span>
         </label>
         <label class="vote-option">
           <input type="checkbox" name="priority" value="gathering">
-          <span data-i18n="voteOptionGathering">A space for gathering</span>
+          <span data-i18n="voteOptionGathering">Places to gather, not just play</span>
         </label>
         <label class="vote-option">
           <input type="checkbox" name="priority" value="other" id="other-checkbox">
@@ -48,38 +51,52 @@
              id="other-text" 
              class="other-input" 
              data-i18n-placeholder="voteOtherPlaceholder"
-             placeholder="Tell us what would help..." 
+             placeholder="Tell us what..." 
              disabled>
       
       <div class="buttons">
-        <button class="btn-vote" data-i18n="vote">Vote</button>
+        <button class="btn-vote" data-i18n="submitBtn">SUBMIT</button>
       </div>
     </div>
+  </div>
 
-    <!-- Step 2: Confirmation -->
-    <div class="step step-2">
-      <h1 data-i18n="voteStep2Title">Thanks — your input has been counted</h1>
+  <!-- Step 2: Thank You (with color blocks) -->
+  <div class="step step-2">
+    <div class="container">
+      <h1 data-i18n="voteStep2Title">YOUR INPUT HAS BEEN COUNTED</h1>
+      <p class="subhead" data-i18n="voteStep2Text">The artist will use these priorities to guide the design.</p>
       
-      <div class="design-inspiration">
-        <p class="inspiration-prompt" data-i18n="inspirationPromptVote">Want to see what's possible for this space?</p>
-        <a href="https://instagram.com/streetoyster.nyc" target="_blank" rel="noopener noreferrer">
-          <button class="secondary" data-i18n="designReferenceBtn">Explore design references →</button>
-        </a>
+      <a href="https://instagram.com/streetoyster.nyc" target="_blank" rel="noopener noreferrer" class="link-button" data-i18n="seeReferencesBtn">SEE DESIGN REFERENCES →</a>
+    </div>
+    
+    <!-- Timeline block (color section) -->
+    <section class="content-block timeline-block">
+      <div class="block-content">
+        <p class="block-label" data-i18n="timelineLabel">WHAT HAPPENS NEXT</p>
+        <p class="timeline-steps" data-i18n="timelineSteps">→ Spring 2026: Community provides feedback<br>→ Summer 2026: Artist reviews community input<br>→ Fall 2026: Design concepts shared<br>→ Spring 2027: Installation begins</p>
+        <p class="follow">
+          <span data-i18n="followText">Follow the process:</span> 
+          <a href="https://instagram.com/streetoyster.nyc" target="_blank" rel="noopener noreferrer">@streetoyster.nyc</a>
+        </p>
+      </div>
+    </section>
+    
+    <div class="container">
+      <!-- Share action -->
+      <div class="share-action">
+        <p class="block-label" data-i18n="shareActionLabel">WANT TO SHARE HOW YOU USE THE PLAYGROUND?</p>
+        <a href="share.html"><button class="secondary" data-i18n="shareActionBtn">SHARE A PHOTO</button></a>
       </div>
       
-      <p class="helper" data-i18n="voteStep2Helper">Want to share how you use the playground?</p>
-      
-      <div class="buttons">
-        <a href="share.html"><button data-i18n="share">Share</button></a>
-      </div>
-      
-      <div class="form-group">
-        <label class="field-label" data-i18n="getUpdates">Get project updates</label>
+      <!-- Email signup -->
+      <div class="email-signup">
+        <p class="block-label" data-i18n="updatesLabel">GET PROJECT UPDATES</p>
         <input type="email" id="email" data-i18n-placeholder="emailPlaceholder" placeholder="your@email.com (optional)">
+        <p class="meta" data-i18n="emailMeta">3-4 emails about design progress. No spam.</p>
       </div>
       
       <div class="buttons">
-        <a href="index.html"><button class="secondary" data-i18n="done">Done</button></a>
+        <a href="index.html"><button data-i18n="done">DONE</button></a>
       </div>
     </div>
   </div>
@@ -94,7 +111,6 @@
         step.classList.remove('active');
       });
       document.querySelector(`.step-${n}`).classList.add('active');
-      document.querySelector('.current-step').textContent = n;
       currentStep = n;
       window.scrollTo(0, 0);
     }

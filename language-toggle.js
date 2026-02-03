@@ -3,12 +3,14 @@ let currentLanguage = 'en';
 function setLanguage(lang) {
   currentLanguage = lang;
   
-  // Update text content
+  // Update text content (convert \n to <br> for HTML rendering)
   const elements = document.querySelectorAll("[data-i18n]");
   elements.forEach(el => {
     const key = el.getAttribute("data-i18n");
     if (translations[lang] && translations[lang][key]) {
-      el.textContent = translations[lang][key];
+      const text = translations[lang][key];
+      // Use innerHTML to support line breaks and basic formatting
+      el.innerHTML = text.replace(/\n/g, '<br>');
     }
   });
   

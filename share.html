@@ -8,85 +8,95 @@
 </head>
 <body class="page-share">
   <div class="container">
-    <div class="progress">
-      <span data-i18n="progressStep">Step</span> 
-      <span class="current-step">1</span> 
-      <span data-i18n="progressOf">of</span> 
-      4
-    </div>
-    
-    <!-- Step 1: Photo (Optional) -->
+    <!-- Step 1: Photo Upload -->
     <div class="step step-1 active">
-      <h1 data-i18n="shareStep1Title">Take or upload a photo</h1>
-      <p class="helper" data-i18n="shareStep1Helper">This can be anything — play, rest, gathering, waiting, passing through.</p>
+      <p class="step-label" data-i18n="shareStep1Label">SHARE A PHOTO</p>
+      
+      <h1 data-i18n="shareStep1Title">SHOW US HOW YOU USE THIS SPACE</h1>
+      
+      <p class="description" data-i18n="shareStep1Helper">Playing, resting, gathering, waiting, passing through—it all matters.</p>
       
       <div class="buttons">
-        <button class="btn-upload" data-i18n="uploadPhoto">Upload photo</button>
-        <button class="btn-skip secondary" data-i18n="skipStep">Skip this step</button>
+        <button class="btn-upload" data-i18n="uploadPhoto">TAKE OR UPLOAD PHOTO</button>
+        <button class="btn-skip secondary" data-i18n="skipStep">SKIP THIS STEP</button>
       </div>
       
-      <p class="privacy-note" data-i18n="privacyNote">Faces can be blurred. Photos are used only for community planning.</p>
+      <p class="privacy-note" data-i18n="privacyNote">Faces can be blurred<br>Photos used only for design planning<br>Children's privacy protected</p>
     </div>
 
-    <!-- Step 2: Description (Required) -->
+    <!-- Step 2: Caption -->
     <div class="step step-2">
-      <h1 data-i18n="shareStep2Title">What's happening here?</h1>
-      <p class="helper" data-i18n="shareStep2Helper">A sentence or two is enough. Write in any language.</p>
+      <p class="step-label" data-i18n="shareStep2Label">ADD CONTEXT (OPTIONAL)</p>
+      
+      <h1 data-i18n="shareStep2Title">WHAT'S HAPPENING?</h1>
+      
+      <p class="description" data-i18n="shareStep2Helper">A sentence or two is perfect. Write in any language.</p>
       
       <textarea id="description" rows="5" data-i18n-placeholder="textareaPlaceholder" placeholder="My kids wait here after school because there's shade."></textarea>
       
       <div class="buttons">
-        <button class="btn-next" data-i18n="submit">Submit</button>
+        <button class="btn-next" data-i18n="continueBtn">CONTINUE</button>
       </div>
     </div>
 
-    <!-- Step 3: Context (Optional) -->
+    <!-- Step 3: Time of Day -->
     <div class="step step-3">
-      <h1 data-i18n="shareStep3Title">A little context helps</h1>
-      <p class="helper" data-i18n="shareStep3Helper">These patterns help us understand how the playground is used.</p>
+      <p class="step-label" data-i18n="shareStep3Label">WHEN WAS THIS?</p>
       
-      <div class="form-group">
-        <label class="field-label" data-i18n="timeLabel">Time of day</label>
-        <div class="time-options">
-          <label class="radio-option">
-            <input type="radio" name="time" value="morning">
-            <span data-i18n="morning">Morning</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="time" value="afternoon">
-            <span data-i18n="afternoon">Afternoon</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="time" value="evening">
-            <span data-i18n="evening">Evening</span>
-          </label>
-        </div>
+      <h1 data-i18n="shareStep3Title">TIME OF DAY</h1>
+      
+      <p class="description" data-i18n="shareStep3Helper">Helps us understand when the playground is most used.</p>
+      
+      <div class="time-options">
+        <label class="radio-option">
+          <input type="radio" name="time" value="morning">
+          <span data-i18n="morning">Morning</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="time" value="afternoon">
+          <span data-i18n="afternoon">Afternoon</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="time" value="evening">
+          <span data-i18n="evening">Evening</span>
+        </label>
       </div>
       
       <div class="buttons">
-        <button class="btn-finish" data-i18n="finish">Finish</button>
+        <button class="btn-finish" data-i18n="finish">FINISH</button>
       </div>
     </div>
+  </div>
 
-    <!-- Step 4: Thank You -->
-    <div class="step step-4">
-      <h1 data-i18n="shareStep4Title">Thank you for sharing</h1>
-      <p data-i18n="shareStep4Text">Your perspective helps guide decisions about this space.</p>
-      
-      <div class="design-inspiration">
-        <p class="inspiration-prompt" data-i18n="inspirationPrompt">Want to see how other playgrounds are being reimagined around the world?</p>
-        <a href="https://instagram.com/streetoyster.nyc" target="_blank" rel="noopener noreferrer">
-          <button class="secondary" data-i18n="designReferenceBtn">Explore design references →</button>
-        </a>
+  <!-- Step 4: Thank You (with color blocks) -->
+  <div class="step step-4">
+    <div class="container">
+      <h1 data-i18n="shareStep4Title">THANK YOU</h1>
+      <p class="subhead" data-i18n="shareStep4Text">Your input will help shape the artist's design.</p>
+    </div>
+    
+    <!-- Timeline block (color section) -->
+    <section class="content-block timeline-block">
+      <div class="block-content">
+        <p class="block-label" data-i18n="timelineLabel">WHAT HAPPENS NEXT</p>
+        <p class="timeline-steps" data-i18n="timelineSteps">→ Spring 2026: Community provides feedback<br>→ Summer 2026: Artist reviews community input<br>→ Fall 2026: Design concepts shared<br>→ Spring 2027: Installation begins</p>
+        <p class="follow">
+          <span data-i18n="followText">Follow the process:</span> 
+          <a href="https://instagram.com/streetoyster.nyc" target="_blank" rel="noopener noreferrer">@streetoyster.nyc</a>
+        </p>
       </div>
-      
-      <div class="form-group">
-        <label class="field-label" data-i18n="updatesLabel">Want updates on workshops and next steps?</label>
+    </section>
+    
+    <div class="container">
+      <!-- Email signup -->
+      <div class="email-signup">
+        <p class="block-label" data-i18n="updatesLabel">GET PROJECT UPDATES</p>
         <input type="email" id="email" data-i18n-placeholder="emailPlaceholder" placeholder="your@email.com (optional)">
+        <p class="meta" data-i18n="emailMeta">3-4 emails total about design progress. No spam.</p>
       </div>
       
       <div class="buttons">
-        <a href="index.html"><button data-i18n="done">Done</button></a>
+        <a href="index.html"><button data-i18n="done">DONE</button></a>
       </div>
     </div>
   </div>
@@ -117,13 +127,8 @@
       showStep(2);
     });
     
-    // Step 2: Description submit
+    // Step 2: Continue (description is optional now)
     document.querySelector('.btn-next').addEventListener('click', () => {
-      const description = document.getElementById('description').value.trim();
-      if (!description) {
-        alert(getTranslation('alertDescription'));
-        return;
-      }
       showStep(3);
     });
     

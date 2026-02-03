@@ -8,6 +8,7 @@
 </head>
 <body class="page-index">
   <div class="container">
+    <!-- Language selector -->
     <div class="language">
         <button data-lang="en" onclick="setLanguage('en')" class="language-primary">English</button>
         
@@ -19,15 +20,48 @@
           <button data-lang="zh" onclick="setLanguage('zh')">中文</button>
           <button data-lang="sa" onclick="setLanguage('sa')">संस्कृत</button>
         </div>
-      </div>
+    </div>
+    
+    <!-- Hero section -->
+    <div class="hero">
       <div class="kicker" data-i18n="kicker">Woodside Play Lab</div>
-      <h1 data-i18n="headline">How do you use this playground?</h1>
-      <p class="subhead" data-i18n="intro">We're gathering community input to help shape the future of General Hart Playground.</p>
+      <h1 data-i18n="headline">HOW DO YOU USE THIS PLAYGROUND?</h1>
+      <p class="subhead" data-i18n="intro">We're redesigning General Hart Playground with input from the community who actually uses it.</p>
+    </div>
+  </div>
+  
+  <!-- About block (color section) -->
+  <section class="content-block about-block">
+    <div class="block-content">
+      <p class="block-label" data-i18n="aboutLabel">ABOUT THIS PROJECT</p>
+      <p data-i18n="aboutText">STREETOYSTER QUEENS is commissioning an artist to reimagine this playground based on how you use it.</p>
+      <p class="block-meta" data-i18n="aboutMeta">Led by Alex Tudela, Woodside resident · 2026 David Prize applicant · In conversation with NYC Parks & Community Board 2</p>
+    </div>
+  </section>
+  
+  <div class="container">
+    <!-- Action buttons -->
     <div class="buttons">
         <a href="share.html"><button data-i18n="share">Share</button></a>
         <a href="vote.html"><button data-i18n="vote">Vote</button></a>
-      </div>
-      <div class="meta" data-i18n="meta">Open to all • Any language • No account needed</div>
+    </div>
+  </div>
+  
+  <!-- Timeline block (color section) -->
+  <section class="content-block timeline-block">
+    <div class="block-content">
+      <p class="block-label" data-i18n="timelineLabel">WHAT HAPPENS NEXT</p>
+      <p class="timeline-steps" data-i18n="timelineSteps">→ Spring 2026: Community provides feedback<br>→ Summer 2026: Artist reviews community input<br>→ Fall 2026: Design concepts shared<br>→ Spring 2027: Installation begins</p>
+      <p class="follow">
+        <span data-i18n="followText">Follow the process:</span> 
+        <a href="https://instagram.com/streetoyster.nyc" target="_blank" rel="noopener noreferrer">@streetoyster.nyc</a>
+      </p>
+    </div>
+  </section>
+  
+  <div class="container">
+    <!-- Footer -->
+    <p class="footer-note" data-i18n="meta">Open to all · Any language · No account needed</p>
   </div>
   
   <script src="languages.js"></script>

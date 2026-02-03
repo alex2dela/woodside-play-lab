@@ -3,23 +3,24 @@
   --text-light: #fff;
 }
 
-/* Page-specific color systems (Geometric poster inspired) */
+/* Page-specific color systems (6-color harmonious palette) */
 body.page-index {
-  --background: #b4f8c8;
-  --primary: #e91e63;
-  --secondary: #7b1fa2;
+  --background: #e0ddd5; /* Warm concrete */
+  --primary: #e63946; /* Red - for buttons */
+  --secondary: #d4a359; /* Mustard gold - for timeline */
+  --accent: #c77dff; /* Lavender - for kicker & about */
 }
 
 body.page-share {
-  --background: #ff80ab;
-  --primary: #00bcd4;
-  --secondary: #00c853;
+  --background: #90e0ef; /* Soft cyan */
+  --primary: #e63946; /* Coral red */
+  --secondary: #d4a359; /* Mustard gold */
 }
 
 body.page-vote {
-  --background: #ffd600;
-  --primary: #7b1fa2;
-  --secondary: #2962ff;
+  --background: #e7d4f5; /* Pale lavender */
+  --primary: #2d6a4f; /* Hunter green */
+  --secondary: #ffd60a; /* Sunny yellow */
 }
 
 body {
@@ -32,85 +33,12 @@ body {
   overflow-x: hidden;
 }
 
-/* Geometric patterns per page */
-
-/* Index page: Organic varied circles */
-body.page-index::before {
-  content: '';
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(ellipse 80px 65px at 18% 22%, var(--primary) 100%, transparent 100%),
-    radial-gradient(circle at 52% 18%, var(--secondary) 85px, transparent 85px),
-    radial-gradient(circle at 78% 25%, var(--primary) 55px, transparent 55px),
-    radial-gradient(ellipse 70px 90px at 15% 48%, var(--secondary) 100%, transparent 100%),
-    radial-gradient(circle at 48% 52%, var(--primary) 90px, transparent 90px),
-    radial-gradient(circle at 82% 47%, var(--secondary) 60px, transparent 60px),
-    radial-gradient(circle at 22% 78%, var(--primary) 70px, transparent 70px),
-    radial-gradient(ellipse 85px 75px at 55% 82%, var(--secondary) 100%, transparent 100%),
-    radial-gradient(circle at 80% 75%, var(--primary) 50px, transparent 50px),
-    radial-gradient(circle at 35% 35%, var(--secondary) 45px, transparent 45px),
-    radial-gradient(ellipse 55px 70px at 65% 65%, var(--primary) 100%, transparent 100%);
-  opacity: 0.15;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
-
-body.page-index::after {
-  display: none;
-}
-
-/* Share page: Repeating diagonal stripes */
-body.page-share::before {
-  content: '';
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    -8deg,
-    transparent 0px,
-    transparent 80px,
-    var(--primary) 80px,
-    var(--primary) 150px
-  );
-  opacity: 0.2;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
-
-body.page-share::after {
-  display: none;
-}
-
-/* Vote page: Multiple stacked rectangles */
-body.page-vote::before {
-  content: '';
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: 
-    linear-gradient(var(--primary), var(--primary)) -80px 100px / 280px 200px no-repeat,
-    linear-gradient(var(--secondary), var(--secondary)) calc(100% + 60px) 50px / 200px 180px no-repeat,
-    linear-gradient(var(--primary), var(--primary)) -60px calc(100% - 150px) / 220px 250px no-repeat,
-    linear-gradient(var(--secondary), var(--secondary)) calc(100% - 100px) calc(100% - 200px) / 240px 220px no-repeat,
-    linear-gradient(var(--primary), var(--primary)) 50% 60% / 180px 160px no-repeat;
-  opacity: 0.15;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
-
-body.page-vote::after {
-  display: none;
-}
+/* Patterns removed - clean editorial approach */
 
 .container {
   max-width: 560px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 2.5rem 2rem;
   position: relative;
   z-index: 1;
 }
@@ -120,9 +48,9 @@ body.page-vote::after {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 2rem;
-  background: var(--secondary);
-  color: var(--text-light);
+  margin-bottom: 1.2rem;
+  background: var(--primary);
+  color: var(--text);
   padding: 0.5rem 1.2rem;
   display: inline-block;
   border-radius: 24px;
@@ -132,24 +60,24 @@ body.page-vote::after {
 
 h1 {
   font-family: 'Arial Black', 'Helvetica Neue', Impact, sans-serif;
-  font-size: 4rem;
+  font-size: 6.5rem;
   font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: -0.05em;
+  line-height: 0.85;
+  letter-spacing: -0.06em;
   text-transform: uppercase;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.5;
   max-width: 38ch;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   font-weight: 500;
 }
 
 .subhead {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   opacity: 0.8;
   font-weight: 400;
 }
@@ -157,17 +85,12 @@ p {
 .buttons {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 1.2rem;
+  margin-bottom: 0;
 }
 
 .buttons a:first-child button {
   background: var(--primary);
-}
-
-.buttons a:last-child button {
-  background: var(--secondary);
-  color: var(--text);
 }
 
 a {
@@ -177,11 +100,11 @@ a {
 
 button {
   width: 100%;
-  padding: 1.4rem 2rem;
-  font-size: 1.05rem;
+  padding: 1.5rem 2rem;
+  font-size: 1.2rem;
   font-weight: 900;
   letter-spacing: 0.02em;
-  border: 5px solid var(--text);
+  border: 6px solid var(--text);
   border-radius: 0;
   background: var(--primary);
   color: var(--text-light);
@@ -208,6 +131,108 @@ button:active {
   color: var(--text);
   opacity: 0.7;
   font-weight: 500;
+}
+
+/* Color block sections (Swiss poster inspired) */
+.content-block {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 2.5rem 0;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.block-content {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.about-block .block-content {
+  max-width: 640px;
+}
+
+.about-block {
+  background: var(--primary);
+  color: var(--text);
+}
+
+/* Index page specific overrides */
+body.page-index .kicker {
+  background: var(--accent); /* Lavender */
+}
+
+body.page-index .about-block {
+  background: var(--accent); /* Lavender */
+}
+
+.timeline-block {
+  background: var(--secondary);
+  color: var(--text-light);
+}
+
+body.page-index .timeline-block {
+  color: var(--text);
+}
+
+body.page-share .timeline-block {
+  background: #0818a8;
+  color: #90e0ef;
+}
+
+body.page-vote .timeline-block {
+  background: var(--primary);
+  color: #b8c5a0;
+}
+
+.block-label {
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  opacity: 0.85;
+}
+
+.block-meta {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  font-weight: 500;
+  margin-top: 1rem;
+  max-width: 60ch;
+}
+
+.timeline-steps {
+  line-height: 1.8;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.follow {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+.follow a {
+  color: var(--text-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-note {
+  font-size: 0.85rem;
+  letter-spacing: 0.01em;
+  opacity: 0.7;
+  font-weight: 500;
+  margin-top: 2rem;
+  padding-bottom: 1.5rem;
 }
 
 .language {
@@ -324,6 +349,28 @@ a[href$=".html"]:hover {
   display: block;
 }
 
+.step-2,
+.step-4 {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.step-2 .container,
+.step-4 .container {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 0;
+}
+
+.step-2 .container:first-child,
+.step-4 .container:first-child {
+  padding-top: 2.5rem;
+}
+
 @keyframes fadeIn {
   from { 
     opacity: 0; 
@@ -343,12 +390,91 @@ a[href$=".html"]:hover {
   max-width: 42ch;
 }
 
+.step-label {
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  display: block;
+}
+
+.description {
+  font-size: 1.05rem;
+  opacity: 0.8;
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 42ch;
+  margin-bottom: 2rem;
+}
+
 .privacy-note {
-  font-size: 0.85rem;
-  opacity: 0.65;
+  font-size: 0.9rem;
+  opacity: 0.7;
   font-weight: 400;
   margin-top: 2rem;
   max-width: 42ch;
+  line-height: 1.8;
+}
+
+.link-button {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 3px solid var(--text);
+  padding-bottom: 0.3rem;
+  margin: 2rem 0;
+  transition: transform 0.15s ease;
+}
+
+.link-button:hover {
+  transform: translateX(4px);
+}
+
+.share-action {
+  margin-top: 0;
+  margin-bottom: 3rem;
+  padding: 3rem 2rem 4rem;
+  background: var(--secondary);
+  margin-left: -2rem;
+  margin-right: -2rem;
+  color: var(--text);
+  border-radius: 0 0 50% 50% / 0 0 40% 40%;
+  text-align: center;
+}
+
+.share-action .block-label {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  font-weight: 900;
+  max-width: 100%;
+}
+
+.email-signup {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.email-signup .block-label {
+  margin-bottom: 1rem;
+}
+
+.email-signup input[type="email"] {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.email-signup .meta {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
 }
 
 /* Form inputs */
@@ -397,8 +523,8 @@ input[type="email"]:focus {
   display: flex;
   align-items: center;
   padding: 1rem 1.2rem;
-  border: 4px solid var(--text);
-  background: rgba(255, 255, 255, 0.3);
+  border: 4px solid currentColor;
+  background: rgba(255, 255, 255, 0.25);
   cursor: pointer;
   font-size: 1.05rem;
   font-weight: 600;
@@ -423,6 +549,17 @@ input[type="email"]:focus {
   border-color: var(--primary);
 }
 
+/* Share page: lime green for time of day selection */
+body.page-share .radio-option:has(input:checked) {
+  background: #d4ed31;
+  color: var(--text);
+  border-color: #d4ed31;
+}
+
+body.page-share .radio-option input[type="radio"] {
+  accent-color: #d4ed31;
+}
+
 /* Vote options */
 .vote-options {
   display: flex;
@@ -435,8 +572,8 @@ input[type="email"]:focus {
   display: flex;
   align-items: center;
   padding: 1.3rem 1.5rem;
-  border: 5px solid var(--text);
-  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid currentColor;
+  background: rgba(255, 255, 255, 0.25);
   cursor: pointer;
   font-size: 1.1rem;
   font-weight: 700;
@@ -469,9 +606,20 @@ input[type="email"]:focus {
 .vote-option:has(input:checked) {
   background: var(--primary);
   color: var(--text-light);
-  border-color: var(--text);
-  box-shadow: 6px 6px 0 var(--text);
+  border-color: var(--primary);
+  box-shadow: 6px 6px 0 currentColor;
   transform: translateX(0);
+}
+
+/* Vote page: green color combo for selected options */
+body.page-vote .vote-option:has(input:checked) {
+  background: #2d5f4f;
+  color: #b8c5a0;
+  border-color: #2d5f4f;
+}
+
+body.page-vote .vote-option input[type="checkbox"] {
+  accent-color: #2d5f4f;
 }
 
 /* Other text input */
@@ -552,12 +700,12 @@ button.secondary:hover {
   }
 
   .container {
-    padding: 3rem 1.5rem;
+    padding: 1.5rem 1.5rem;
   }
   
   h1 {
-    font-size: 2.8rem;
-    line-height: 0.95;
+    font-size: 3.5rem;
+    line-height: 0.88;
   }
 
   .kicker {
@@ -566,8 +714,8 @@ button.secondary:hover {
   }
 
   button {
-    font-size: 0.95rem;
-    padding: 1.2rem 1.5rem;
+    font-size: 1.05rem;
+    padding: 1.3rem 1.5rem;
     box-shadow: 6px 6px 0 var(--text);
   }
 
@@ -601,14 +749,75 @@ button.secondary:hover {
     font-size: 1rem;
     padding: 1rem;
   }
+  
+  .content-block {
+    padding: 1.8rem 0;
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .block-content {
+    padding: 0 1.5rem;
+  }
+  
+  .hero {
+    margin-bottom: 0.5rem;
+  }
+  
+  .block-label {
+    font-size: 0.7rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .share-action .block-label {
+    font-size: 1.4rem;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+  
+  .block-meta {
+    font-size: 0.8rem;
+  }
+  
+  .timeline-steps {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  
+  .footer-note {
+    font-size: 0.85rem;
+  }
+  
+  .link-button {
+    font-size: 0.95rem;
+    margin: 1.5rem 0;
+  }
+  
+  p {
+    font-size: 1.15rem;
+  }
+  
+  .subhead {
+    font-size: 1.1rem;
+  }
+  
+  .share-action {
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+    padding: 2.5rem 1.5rem 3.5rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    border-radius: 0 0 50% 50% / 0 0 35% 35%;
+  }
+  
+  .step-2 .container,
+  .step-4 .container {
+    padding: 2rem 1.5rem 0;
+  }
 }
 
 @media (min-width: 601px) {
-  h1 {
-    font-size: 4.5rem;
-  }
-  
   .step h1 {
-    font-size: 3.5rem;
+    font-size: 5.5rem;
   }
 }
