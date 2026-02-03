@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Share</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="page-share">
   <div class="container">
@@ -101,6 +102,7 @@
     </div>
   </div>
 
+  <script src="supabase-client.js"></script>
   <script src="languages.js"></script>
   <script src="language-toggle.js"></script>
   <script>
@@ -112,15 +114,45 @@
         step.classList.remove('active');
       });
       document.querySelector(`.step-${n}`).classList.add('active');
-      document.querySelector('.current-step').textContent = n;
       currentStep = n;
       window.scrollTo(0, 0);
     }
     
+    // Add file input dynamically
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+    fileInput.capture = 'environment'; // Prefer back camera on mobile
+    fileInput.style.display = 'none';
+    document.body.appendChild(fileInput);
+    
+    // Store uploaded photo URL
+    let uploadedPhotoUrl = null;
+    
     // Step 1: Upload or Skip
     document.querySelector('.btn-upload').addEventListener('click', () => {
-      // In production, handle file upload here
-      showStep(2);
+      fileInput.click();
+    });
+    
+    fileInput.addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      
+      try {
+        const loader = showLoading('Compressing and uploading photo...');
+        
+        // Upload photo (compression happens inside)
+        uploadedPhotoUrl = await withTimeout(uploadPhoto(file), 45000);
+        
+        hideLoading();
+        
+        // Show success and move to next step
+        showStep(2);
+      } catch (error) {
+        hideLoading();
+        showError('Failed to upload photo. Please check your connection and try again.');
+        console.error(error);
+      }
     });
     
     document.querySelector('.btn-skip').addEventListener('click', () => {
@@ -133,8 +165,32 @@
     });
     
     // Step 3: Context finish
-    document.querySelector('.btn-finish').addEventListener('click', () => {
-      showStep(4);
+    document.querySelector('.btn-finish').addEventListener('click', async () => {
+      try {
+        showLoading('Saving your input...');
+        
+        // Gather form data
+        const caption = document.getElementById('description').value.trim() || null;
+        const timeOfDay = document.querySelector('input[name="time"]:checked')?.value || null;
+        
+        // Submit to database
+        await withTimeout(
+          submitToDatabase({
+            flow_type: 'share',
+            photo_url: uploadedPhotoUrl,
+            caption: caption,
+            time_of_day: timeOfDay
+          }),
+          30000
+        );
+        
+        hideLoading();
+        showStep(4); // Show thank you page
+      } catch (error) {
+        hideLoading();
+        showError('Failed to save your input. Please check your connection and try again.');
+        console.error(error);
+      }
     });
   </script>
 </body>

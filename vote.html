@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vote</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="page-vote">
   <div class="container">
@@ -101,6 +102,7 @@
     </div>
   </div>
 
+  <script src="supabase-client.js"></script>
   <script src="languages.js"></script>
   <script src="language-toggle.js"></script>
   <script>
@@ -116,7 +118,7 @@
     }
     
     // Step 1: Vote submit
-    document.querySelector('.btn-vote').addEventListener('click', () => {
+    document.querySelector('.btn-vote').addEventListener('click', async () => {
       const selected = document.querySelectorAll('input[name="priority"]:checked');
       const otherCheckbox = document.getElementById('other-checkbox');
       const otherText = document.getElementById('other-text');
@@ -131,7 +133,40 @@
         return;
       }
       
-      showStep(2);
+      try {
+        showLoading('Submitting your votes...');
+        
+        // Build vote choices array
+        const voteChoices = [];
+        selected.forEach(checkbox => {
+          if (checkbox.value === 'other') {
+            voteChoices.push({
+              choice: 'other',
+              text: otherText.value.trim()
+            });
+          } else {
+            voteChoices.push({
+              choice: checkbox.value
+            });
+          }
+        });
+        
+        // Submit to database
+        await withTimeout(
+          submitToDatabase({
+            flow_type: 'vote',
+            vote_choices: voteChoices
+          }),
+          30000
+        );
+        
+        hideLoading();
+        showStep(2); // Show thank you page
+      } catch (error) {
+        hideLoading();
+        showError('Failed to submit your votes. Please check your connection and try again.');
+        console.error(error);
+      }
     });
     
     // Enable/disable "Other" text input based on checkbox
